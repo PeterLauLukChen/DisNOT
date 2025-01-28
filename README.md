@@ -51,7 +51,7 @@ In this section, we use toy data provided in the data file. This module is desig
 Please set the hyperparameters in `sparsity-induce.py`. Example of running: 
 
 ```bash
-python heuristic.py --INITIAL_SPARSITY_INDUCING_INTENSITY 0.0005 --PENALITY stvs --ALPHA 0.8 --SA_MIN_TEMP 0.1 --SA_TEMPERATURE_DECAY_RATE 0.98
+python heuristic.py --INITIAL_SPARSITY_INDUCING_INTENSITY 0.0005 --PENALITY 'stvs' --ALPHA 0.8 --SA_MIN_TEMP 0.1 --SA_TEMPERATURE_DECAY_RATE 0.98
 ```
 
 ## **High-Dim SA**
