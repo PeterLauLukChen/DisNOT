@@ -72,7 +72,7 @@ In this section, follow these steps:
    - Refer to the instructions in `perturb-data-prep.py` to download the public dataset and prepare it for processing.
 
 2. **Solve OT Map (Standard L2 Cost)**:
-   - After the data is prepared, follow the instructions in `ott-jax-regularization-solver.py` to solve the OT map between control and treated cells under the standard L2 cost.
+   - After the data is prepared, follow the instructions in `ott-jax-l2-solver.py` to solve the OT map between control and treated cells under the standard L2 cost.
 
 3. **Sinkhorn Solver Results**:
    - For results using the Sinkhorn solver (Cuturi et al., 2023), follow the instructions in `ott-jax-regularization-solver.py` and set the hyperparameters as detailed in Appendix C of the referenced paper.
