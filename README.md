@@ -2,7 +2,7 @@
 
 This repository contains the code implementation for the work:
 
-**Displacement-Sparse Neural Optimal Transport**
+*Displacement-Sparse Neural Optimal Transport*
 
 ---
 
@@ -34,6 +34,35 @@ This repository is divided into four main components:
    - Includes all benchmarks and comparisons for drug perturbation experiments.
    - Contains Sinkhorn solver and neural OT solver implementations via DisNOT.
 
+## Low-Dimensional Constant Sparsity
+
+In this section, we prepare toy data in the data file. This module is designed for constant sparsity intensity in a low-dimensional space.
+
+Please set the hyperparameters in `sparsity-induce.py`. Example of running:
+
+```bash
+python sparsity-induce.py --SPARSITY_INDUCING_INTENSITY 0.0001 --PENALITY 'stvs'
+```
+
+## **Low-Dim SA**
+
+In this section, we use toy data provided in the data file. This module is designed for heuristic adjustments in a low-dimensional space.
+
+Please set the hyperparameters in `sparsity-induce.py`. Example of running: 
+
+```bash
+python heuristic.py --INITIAL_SPARSITY_INDUCING_INTENSITY 0.0005 --PENALITY stvs --ALPHA 0.8 --SA_MIN_TEMP 0.1 --SA_TEMPERATURE_DECAY_RATE 0.98
+```
+
+## **High-Dim SA**
+
+We provide a high-dimensional toy data generator in `hd-data-gen.py`. Please follow the instructions inside the script to prepare your toy high-dimensional simulated sc-RNA perturbation dataset.
+
+To run high-dimensional simulated annealing, please set the hyperparameters in `hd.py`. Example of running:
+
+```bash
+python hd.py --INITIAL_SPARSITY_INDUCING_INTENSITY 0.005 --DIM_CON 150 --SA_MIN_TEMP 0.15 --SA_TEMPERATURE_DECAY_RATE 0.95
+```
 
 ## **High-Dim Drug Perturbation**
 

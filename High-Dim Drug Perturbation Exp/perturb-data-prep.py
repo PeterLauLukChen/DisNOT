@@ -1,5 +1,6 @@
 import numpy as np
 import scanpy as sc
+import os
 
 """
 This module processes cell perturbation data for use in optimal transport (OT) matching tasks. 
@@ -40,7 +41,8 @@ if not isinstance(perturbed_features, np.ndarray):
     perturbed_features = perturbed_features.toarray()
 
 # Save the processed feature matrices as .npy files for downstream OT tasks
-np.save(f'./{specified_drug}_control_features.npy', control_features)
-np.save(f'./{specified_drug}_perturbed_features.npy', perturbed_features)
+os.makedirs('./data', exist_ok=True)
+np.save(f'./data/{specified_drug}_control_features.npy', control_features)
+np.save(f'./data/{specified_drug}_perturbed_features.npy', perturbed_features)
 print(f"Control features shape: {control_features.shape} (cells x features)")
 print(f"Perturbed features shape: {perturbed_features.shape} (cells x features)")
