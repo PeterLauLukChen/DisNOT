@@ -42,7 +42,7 @@ parser.add_argument('--VARIANCE', type=float, default=0.5, help='variance for ea
 parser.add_argument('--N_TEST', type=int, default=1000, help='number of test samples')
 parser.add_argument('--N_PLOT', type=int, default=220, help='number of samples for plotting')
 parser.add_argument('--N_CPU', type=int, default=8, help='number of cpu threads to use during batch generation')
-parser.add_argument('--INPUT_DIM', type=int, default=250, help='dimensionality of the input x')
+parser.add_argument('--INPUT_DIM', type=int, default=3000, help='dimensionality of the input x')
 parser.add_argument('--N_GENERATOR_ITERS', type=int, default=10, help='number of training steps for discriminator per iter')
 
 #SICNN parameters
@@ -87,29 +87,12 @@ def main():
 
     saver = tf.compat.v1.train.Saver()
     
-
-
     # Running the optimization
     with tf.compat.v1.Session() as sess:
-
-        current_folder = os.path.dirname(os.path.abspath(__file__))
-    
-        data_folder_sicnn = os.path.join(current_folder, 'data')
-
-        np.load(os.path.join(data_folder_sicnn, 'treated.npy'))
-
-        compute_OT = ComputeOT(sess, opt.INPUT_DIM, fn_model, gn_model,  opt.LR, opt.SA_INITIAL_TEMPERATURE, opt.SA_MIN_TEMP, opt.SA_TEMPERATURE_DECAY_RATE)
-        
+        compute_OT = ComputeOT(sess, opt.INPUT_DIM, fn_model, gn_model,  opt.LR, opt.SA_INITIAL_TEMPERATURE, opt.SA_MIN_TEMP, opt.SA_TEMPERATURE_DECAY_RATE)   
         compute_OT.learn(opt.BATCH_SIZE, opt.ITERS, opt.N_GENERATOR_ITERS, opt.SCALE, opt.VARIANCE, opt.DATASET_X, opt.DATASET_Y, opt.N_PLOT, EXPERIMENT_NAME, opt, opt.INITIAL_SPARSITY_INDUCING_INTENSITY, opt.DIM_CON) # learning the optimal map
-        
-
         saver.save(sess, "saving_model/{0}/model-{1}.ckpt".format(EXPERIMENT_NAME, SET_PARAMS_NAME+  str(opt.ITERS) + '_iters'))
-        
-
         print("Final Wasserstein distance: {0}".format(compute_OT.compute_W2(X_test, Y_test)))
-
-    # Using exact OT solvers in Python
-    print("Actual Wasserstein distance: {0}".format(python_OT(X_test, Y_test, opt.N_TEST)))
     
 
 class ComputeOT:

@@ -61,7 +61,7 @@ We provide a high-dimensional toy data generator in `hd-data-gen.py`. Please fol
 To run high-dimensional simulated annealing, please set the hyperparameters in `hd.py`. Example of running:
 
 ```bash
-python hd.py --INITIAL_SPARSITY_INDUCING_INTENSITY 0.005 --DIM_CON 150 --SA_MIN_TEMP 0.15 --SA_TEMPERATURE_DECAY_RATE 0.95
+python hd.py --INITIAL_SPARSITY_INDUCING_INTENSITY 0.005 --DIM_CON 150 --SA_MIN_TEMP 0.15 --SA_TEMPERATURE_DECAY_RATE 0.95 --INPUT_DIM 78
 ```
 
 ## **High-Dim Drug Perturbation**

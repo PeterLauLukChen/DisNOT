@@ -25,8 +25,8 @@ os.environ["CUDA_VISIBLE_DEVICES"]="0,1"  # specify which GPU(s) to be used
 
 parser = argparse.ArgumentParser()
 # ICNNOT parameters
-parser.add_argument('--DATASET_X', type=str, default='mel', help='which dataset to use for X')
-parser.add_argument('--DATASET_Y', type=str, default='c2', help='which dataset to use for Y')
+parser.add_argument('--DATASET_X', type=str, default='t', help='which dataset to use for X')
+parser.add_argument('--DATASET_Y', type=str, default='c', help='which dataset to use for Y')
 
 parser.add_argument('--SHOW_THE_PLOT', type=bool, default=False, help='Boolean option to show the plots or not')
 parser.add_argument('--DRAW_THE_ARROWS', type=bool, default=False, help='Whether to draw transport arrows or not')
@@ -143,7 +143,7 @@ class ComputeOT:
         self.intensity = tf.compat.v1.placeholder(tf.float32, shape=(), name='intensity')
         
         # Smoothed L0 norm
-        epsilon = 0.01 
+        epsilon = 0.01 # should based on the length of displacement vector
         self.S = tf.reduce_sum(tf.reduce_sum(1 - tf.exp(-tf.square(self.grad_gy - self.y) / (2 * (epsilon) ** 2)), axis=1))
 
         self.first_displacement_vector = self.grad_gy[0] - self.y[0]
