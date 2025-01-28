@@ -4,8 +4,6 @@ import os
 '''
 This module generates synthetic high-dimensional datasets to simulate control and 
 treated conditions for biological or computational experiments. 
-
-!! First, create a data folder within this current folder 
 '''
 
 # Define parameters for the dataset
