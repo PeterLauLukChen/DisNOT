@@ -11,7 +11,7 @@ This repository contains the code implementation for the work:
 Before running any specific task, ensure you install all required dependencies by executing:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 ## **Repository Structure**
