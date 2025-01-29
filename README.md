@@ -81,3 +81,11 @@ In this section, follow these steps:
    - For results using the neural OT solver:
      - Refer to `icnn-sparsity-solver.py` to update dataset naming conventions and other configurations.
      - Set the required hyperparameters and run the solver to obtain the final displacement statistics.
+
+
+## **Reference**
+
+The code implemenation is based on the original implementation from:
+```
+Makkuva, A., Taghvaei, A., Oh, S., & Lee, J. (2020). Optimal transport mapping via input convex neural networks. In International Conference on Machine Learning (pp. 6672-6681). PMLR.
+```
